@@ -38,6 +38,7 @@ android {
     }
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 }
 
@@ -85,8 +86,8 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.6")
 
     // Shimmer
-    implementation ("com.facebook.shimmer:shimmer:0.5.0")
-    implementation ("com.todkars:shimmer-recyclerview:0.4.1")
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation("com.todkars:shimmer-recyclerview:0.4.1")
 
 
     // Jsoup

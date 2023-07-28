@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/recipeFragment"
+        android:icon="@drawable/twotone_featured_play_list_24"
+        android:title="@string/recipes" />
+    <item
+        android:id="@+id/favoriteRecipesFragment"
+        android:icon="@drawable/twotone_favorite_24"
+        android:title="@string/favorites" />
+    <item
+        android:id="@+id/foodJokeFragment"
+        android:icon="@drawable/twotone_insert_emoticon_24"
+        android:title="@string/jokes" />
+</menu>
