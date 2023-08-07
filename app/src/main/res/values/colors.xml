@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="japanese_indigo">#264653</color>
+    <color name="jungle_green">#2A9D8F</color>
+    <color name="arylide_yellow">#E9C46A</color>
+    <color name="sandy_brown">#F4A261</color>
+    <color name="burnt_sienna">#E76F51</color>
 </resources>
