@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-parcelize")
+    id("com.google.devtools.ksp")
     kotlin("android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
@@ -59,7 +60,7 @@ dependencies {
 
     val roomVersion = "2.5.2"
     implementation("androidx.room:room-runtime:$roomVersion")
-    kapt("androidx.room:room-compiler:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     testImplementation("androidx.room:room-testing:$roomVersion")
 
