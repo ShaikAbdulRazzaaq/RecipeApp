@@ -1,4 +1,4 @@
-package com.learning.recipeapp
+package com.learning.recipeapp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import com.learning.recipeapp.R
 import com.learning.recipeapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,12 +20,14 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.main_nav_host) as NavHostFragment
         navController = navHostFragment.navController
-        val appBarConfiguration = AppBarConfiguration(
+        val appBarConfiguration = AppBarConfiguration.Builder(
             setOf(
                 R.id.recipeFragment, R.id.favoriteRecipesFragment, R.id.foodJokeFragment
             )
+        ).build()
+        NavigationUI.setupActionBarWithNavController(
+            this, navController, appBarConfiguration
         )
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
         NavigationUI.setupWithNavController(binding.bottomNav, navController)
     }
 
