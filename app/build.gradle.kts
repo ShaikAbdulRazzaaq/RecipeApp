@@ -3,6 +3,7 @@ plugins {
     id("kotlin-parcelize")
     kotlin("android")
     id("androidx.navigation.safeargs.kotlin")
+    kotlin("kapt")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
 }
@@ -94,5 +95,8 @@ dependencies {
 
     // Jsoup
     implementation("org.jsoup:jsoup:1.16.1")
+}
+kapt {
+    correctErrorTypes = true
 }
 

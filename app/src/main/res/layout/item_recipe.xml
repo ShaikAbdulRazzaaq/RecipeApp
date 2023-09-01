@@ -78,13 +78,13 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/icon_likes_desc"
+                    likes="@{result.aggregateLikes}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/ubuntu"
-                    android:text="100" />
+                    android:fontFamily="@font/ubuntu" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/icon_time"
@@ -97,25 +97,27 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/icon_time_desc"
+                    cookingTime="@{result.readyInMinutes}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/ubuntu"
-                    android:text="100" />
+                    android:fontFamily="@font/ubuntu" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/icon_vegan"
+                    applyVeganColor="@{result.vegan}"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="8dp"
-                    app:srcCompat="@drawable/vegan_svg"
-                    app:tint="@color/japanese_indigo" />
+                    app:srcCompat="@drawable/green_leaf_vegan_icon_by_vexels"
+                    app:tint="@color/burnt_sienna" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/icon_vegan_desc"
+                    applyVeganColor="@{result.vegan}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
