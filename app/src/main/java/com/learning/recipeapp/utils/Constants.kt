@@ -1,4 +1,4 @@
-package com.learning.recipeapp
+package com.learning.recipeapp.utils
 
 object Constants {
     const val API_KEY = "a5934ae043d04120b0d1e4396bc11138"

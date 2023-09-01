@@ -1,4 +1,4 @@
-package com.learning.recipeapp
+package com.learning.recipeapp.data.network
 
 import com.learning.recipeapp.models.RecipeOnSearchResult
 import retrofit2.Response
