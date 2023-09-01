@@ -1,123 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="16dp"
-    app:cardUseCompatPadding="true">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="result"
+            type="com.learning.recipeapp.models.RecipeOnSearchResult.Result" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardUseCompatPadding="true">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/recipe_image"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintDimensionRatio="21:9"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/undraw_server_down_s_4_lk" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_recipe_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/montserrat_semibold"
-            android:maxLines="1"
-            android:text="Aaj ka Khaana"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recipe_image" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_recipe_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/ubuntu"
-            android:maxLines="3"
-            android:text="Meta Android Developer Professional Certificate Meta Android Developer Professional Certificate Meta Android Developer Professional Certificate"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_recipe_title" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_recipe_description">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon_likes"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center_vertical"
-                app:srcCompat="@drawable/reshot_icon_like_b2j8zvldw7"
-                app:tint="@color/burnt_sienna" />
+                android:id="@+id/recipe_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="21:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/undraw_server_down_s_4_lk" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/icon_likes_desc"
+                android:id="@+id/tv_recipe_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/ubuntu"
-                android:text="100" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon_time"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="8dp"
-                app:srcCompat="@drawable/reshot_icon_time_f9ayq8t4ub"
-                app:tint="@color/burnt_sienna" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/montserrat_semibold"
+                android:maxLines="1"
+                android:text="@{result.title}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recipe_image" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/icon_time_desc"
+                android:id="@+id/tv_recipe_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/ubuntu"
+                android:maxLines="3"
+                android:text="@{result.summary}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_recipe_title" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/ubuntu"
-                android:text="100" />
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_recipe_description">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon_vegan"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="8dp"
-                app:srcCompat="@drawable/vegan_svg"
-                app:tint="@color/japanese_indigo" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/icon_likes"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@drawable/reshot_icon_like_b2j8zvldw7"
+                    app:tint="@color/burnt_sienna" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/icon_vegan_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/ubuntu"
-                android:text="100" />
-        </LinearLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/icon_likes_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="100" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/icon_time"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/reshot_icon_time_f9ayq8t4ub"
+                    app:tint="@color/burnt_sienna" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/icon_time_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="100" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/icon_vegan"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    app:srcCompat="@drawable/vegan_svg"
+                    app:tint="@color/japanese_indigo" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/icon_vegan_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="Vegan" />
+            </LinearLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</com.google.android.material.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
