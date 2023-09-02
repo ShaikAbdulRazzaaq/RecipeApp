@@ -1,9 +1,9 @@
 <resources>
-    <!-- Base application theme. -->
+
     <style name="Base.Theme.RecipeApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="android:colorPrimary">@color/japanese_indigo</item>
+        <item name="colorSecondary">@color/burnt_sienna</item>
+        <item name="colorAccent">@color/jungle_green</item>
+        <item name="colorPrimary">@color/japanese_indigo</item>
     </style>
 
     <style name="Theme.RecipeApp" parent="Base.Theme.RecipeApp" />
