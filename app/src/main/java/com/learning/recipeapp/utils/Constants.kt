@@ -16,4 +16,13 @@ object Constants {
     const val DATABASE_NAME = "recipes_database"
     const val RECIPES_TABLE = "recipes_table"
 
+    //Bottom Sheet and Preferences
+    const val PREFERENCES_NAME = "recipesPreferences"
+    const val DEFAULT_MEAL_TYPE = "main course"
+    const val DEFAULT_DIET_TYPE = "gluten free"
+    const val DEFAULT_RECIPES_NUMBER = "50"
+    const val PREFERENCES_MEAL_TYPE_KEY = "mealType"
+    const val PREFERENCES_MEAL_TYPE_ID_KEY = "mealTypeId"
+    const val PREFERENCES_DIET_TYPE_KEY = "dietType"
+    const val PREFERENCES_DIET_TYPE_ID_KEY = "dietTypeId"
 }

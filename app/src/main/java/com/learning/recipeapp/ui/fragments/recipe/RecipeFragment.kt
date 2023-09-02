@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.learning.recipeapp.R
@@ -38,6 +39,9 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
         binding.viewModel = viewModel
         setUpRecyclerView()
         readDatabase()
+        binding.fabSearch.setOnClickListener {
+            findNavController().navigate(R.id.action_recipeFragment_to_bottomSheetFragment)
+        }
     }
 
     private fun setUpRecyclerView() {

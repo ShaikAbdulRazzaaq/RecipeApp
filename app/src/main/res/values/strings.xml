@@ -33,4 +33,5 @@
     <string name="primal">Primal</string>
     <string name="low_fodmap">Low FODMAP</string>
     <string name="whole30">Whole30</string>
+    <string name="apply">Apply</string>
 </resources>
