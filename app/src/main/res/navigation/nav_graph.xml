@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_recipeFragment_to_bottomSheetFragment"
             app:destination="@id/bottomSheetFragment" />
+        <argument
+            android:name="backFromBottomSheet"
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/favoriteRecipesFragment"
