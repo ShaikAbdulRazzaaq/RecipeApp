@@ -1,4 +1,4 @@
-package com.learning.recipeapp.data
+package com.learning.recipeapp.data.network
 
 sealed class NetworkResult<T>(val data: T? = null, val message: String? = null) {
     class Success<T>(data: T) : NetworkResult<T>(data)

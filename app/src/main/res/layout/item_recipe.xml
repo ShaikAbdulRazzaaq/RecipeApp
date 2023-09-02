@@ -21,24 +21,25 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/recipe_image"
+                loadImageUrl="@{result.image}"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:scaleType="fitXY"
                 app:layout_constraintDimensionRatio="21:9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/undraw_server_down_s_4_lk" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_recipe_title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:ellipsize="end"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/montserrat_semibold"
-                android:maxLines="1"
                 android:text="@{result.title}"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recipe_image" />
 
@@ -52,7 +53,7 @@
                 android:layout_marginBottom="16dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/ubuntu"
-                android:maxLines="3"
+                android:maxLines="5"
                 android:text="@{result.summary}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +125,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/ubuntu"
-                    android:text="Vegan" />
+                    android:text="@string/vegan" />
             </LinearLayout>
 
 
