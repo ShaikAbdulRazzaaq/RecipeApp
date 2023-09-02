@@ -17,6 +17,7 @@ class RecipeItemBinding {
             imageUrl?.let {
                 imageView.load(it) {
                     crossfade(600)
+                    error(R.drawable.error_drawable)
                 }
             }
         }

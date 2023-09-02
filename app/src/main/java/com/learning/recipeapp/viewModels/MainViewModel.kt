@@ -11,7 +11,7 @@ import androidx.lifecycle.viewModelScope
 import com.learning.recipeapp.data.Repository
 import com.learning.recipeapp.data.database.RecipesEntity
 import com.learning.recipeapp.data.network.NetworkResult
-import com.learning.recipeapp.models.RecipeOnSearchResult
+import com.learning.recipeapp.models.RecipeResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,7 +32,7 @@ class MainViewModel @Inject constructor(
         }
 
     /** RETROFIT */
-    val recipesResponse: MutableLiveData<NetworkResult<RecipeOnSearchResult>> = MutableLiveData()
+    val recipesResponse: MutableLiveData<NetworkResult<RecipeResult>> = MutableLiveData()
 
     fun getRecipes(queries: Map<String, String>) = viewModelScope.launch {
         getRecipesSafeCall(queries)
@@ -57,11 +57,11 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun offLineCacheRecipe(result: RecipeOnSearchResult) {
+    private fun offLineCacheRecipe(result: RecipeResult) {
         insertRecipes(RecipesEntity(result))
     }
 
-    private fun handleFoodRecipesResponse(response: Response<RecipeOnSearchResult>): NetworkResult<RecipeOnSearchResult> {
+    private fun handleFoodRecipesResponse(response: Response<RecipeResult>): NetworkResult<RecipeResult> {
         return when {
             response.message().toString().contains("timeout") -> NetworkResult.Error("Timeout")
 

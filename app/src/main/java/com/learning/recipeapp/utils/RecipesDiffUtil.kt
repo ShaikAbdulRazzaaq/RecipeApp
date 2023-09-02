@@ -1,11 +1,11 @@
 package com.learning.recipeapp.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.learning.recipeapp.models.RecipeOnSearchResult
+import com.learning.recipeapp.models.RecipeResult
 
 class RecipesDiffUtil(
-    private val newList: List<RecipeOnSearchResult.Result>,
-    private val oldList: List<RecipeOnSearchResult.Result>
+    private val newList: List<RecipeResult.Result>,
+    private val oldList: List<RecipeResult.Result>
 ) : DiffUtil.Callback() {
     override fun getOldListSize() = oldList.size
 

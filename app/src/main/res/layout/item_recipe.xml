@@ -6,7 +6,7 @@
 
         <variable
             name="result"
-            type="com.learning.recipeapp.models.RecipeOnSearchResult.Result" />
+            type="com.learning.recipeapp.models.RecipeResult.Result" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -25,7 +25,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="fitXY"
-                app:layout_constraintDimensionRatio="21:9"
+                app:layout_constraintDimensionRatio="16:9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

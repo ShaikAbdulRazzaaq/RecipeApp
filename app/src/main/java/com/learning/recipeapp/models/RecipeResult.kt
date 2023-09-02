@@ -3,7 +3,7 @@ package com.learning.recipeapp.models
 
 import com.google.gson.annotations.SerializedName
 
-data class RecipeOnSearchResult(
+data class RecipeResult(
     @SerializedName("results") val results: List<Result>,
     @SerializedName("offset") val offset: Int?, // 0
     @SerializedName("number") val number: Int?, // 50

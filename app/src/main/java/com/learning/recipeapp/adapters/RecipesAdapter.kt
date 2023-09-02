@@ -5,16 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.learning.recipeapp.databinding.ItemRecipeBinding
-import com.learning.recipeapp.models.RecipeOnSearchResult
+import com.learning.recipeapp.models.RecipeResult
 import com.learning.recipeapp.utils.RecipesDiffUtil
 
 class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder>() {
 
-    var recipes = emptyList<RecipeOnSearchResult.Result>()
+    var recipes = emptyList<RecipeResult.Result>()
 
     class RecipesViewHolder(private val binding: ItemRecipeBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(result: RecipeOnSearchResult.Result) {
+        fun bind(result: RecipeResult.Result) {
             binding.result = result
             binding.executePendingBindings()
         }
@@ -38,7 +38,7 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder>() 
         holder.bind(recipe)
     }
 
-    fun setData(newData: RecipeOnSearchResult) {
+    fun setData(newData: RecipeResult) {
         val recipesDiffUtil = RecipesDiffUtil(recipes, newData.results)
         val diffUtilResult = DiffUtil.calculateDiff(recipesDiffUtil)
         recipes = newData.results

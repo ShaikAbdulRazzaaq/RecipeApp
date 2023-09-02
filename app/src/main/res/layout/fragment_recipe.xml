@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.learning.recipeapp.viewModels.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,6 +42,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/appCompatImageView"
+            readApiResponse="@{viewModel.recipesResponse}"
+            readDatabase="@{viewModel.readDatabase}"
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:visibility="gone"
@@ -51,11 +56,12 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_error_text"
+            readApiResponse2="@{viewModel.recipesResponse}"
+            readDatabase2="@{viewModel.readDatabase}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/ubuntu"
-            android:text="Error: Something went wrong;"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
