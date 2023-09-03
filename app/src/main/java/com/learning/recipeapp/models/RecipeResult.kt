@@ -34,7 +34,7 @@ data class RecipeResult(
         @SerializedName("license") val license: String?, // CC BY-SA 3.0
         @SerializedName("sourceName") val sourceName: String?, // Full Belly Sisters
         @SerializedName("pricePerServing") val pricePerServing: Double?, // 112.39
-        @SerializedName("extendedIngredients") val extendedIngredients: @RawValue List<ExtendedIngredient?>?,
+        @SerializedName("extendedIngredients") val extendedIngredients: @RawValue List<ExtendedIngredient>?,
         @SerializedName("id") val id: Int?, // 716426
         @SerializedName("title") val title: String?, // Cauliflower, Brown Rice, and Vegetable Fried Rice
         @SerializedName("readyInMinutes") val readyInMinutes: Int?, // 30

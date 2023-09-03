@@ -7,6 +7,7 @@ import com.learning.recipeapp.ui.fragments.OverViewFragment
 object Constants {
     const val API_KEY = "a5934ae043d04120b0d1e4396bc11138"
     const val BASE_URL = "https://api.spoonacular.com/"
+    const val BASE_IMAGE_URL = "https://spoonacular.com/cdn/ingredients_250x250/"
 
     //Query Keys
     const val QUERY_SEARCH = "query"

@@ -26,11 +26,10 @@ class OverViewFragment : Fragment(R.layout.fragment_over_view) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentOverViewBinding.bind(view)
 
-        val result = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            arguments?.getParcelable(RECIPE_BUNDLE, RecipeResult.Result::class.java)
-        } else {
-            arguments?.getParcelable(RECIPE_BUNDLE)
-        }
+        val result =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) arguments?.getParcelable(
+                RECIPE_BUNDLE, RecipeResult.Result::class.java
+            ) else arguments?.getParcelable(RECIPE_BUNDLE) as? RecipeResult.Result
         binding.apply {
             result?.apply {
                 foodImage.load(image)
@@ -61,7 +60,7 @@ class OverViewFragment : Fragment(R.layout.fragment_over_view) {
         TextViewCompat.setCompoundDrawableTintList(
             this, ColorStateList.valueOf(
                 ContextCompat.getColor(
-                    context, R.color.jungle_green
+                    requireActivity(), R.color.jungle_green
                 )
             )
         )

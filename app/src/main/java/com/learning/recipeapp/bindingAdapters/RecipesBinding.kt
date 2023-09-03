@@ -4,7 +4,7 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textview.MaterialTextView
-import com.learning.recipeapp.data.database.RecipesEntity
+import com.learning.recipeapp.data.database.entities.RecipesEntity
 import com.learning.recipeapp.data.network.NetworkResult
 import com.learning.recipeapp.models.RecipeResult
 
