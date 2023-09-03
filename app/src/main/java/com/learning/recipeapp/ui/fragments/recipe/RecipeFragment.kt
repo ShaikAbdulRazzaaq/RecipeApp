@@ -71,6 +71,10 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
             }
 
             override fun onQueryTextSubmit(query: String?): Boolean {
+                Log.d(TAG, "onQueryTextSubmit: $query")
+                if (query != null) {
+                    searchRecipeApiData(query)
+                }
                 return true
             }
 
@@ -114,14 +118,38 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
                 if (database.isNotEmpty() && !args.backFromBottomSheet) {
                     recipesAdapter.setData(database[0].recipeResult)
                     hideShimmerEffect()
-                } else requestApiData()
+                } else requestRecipeApiData()
             }
         }
     }
 
-    private fun requestApiData() {
+    private fun requestRecipeApiData() {
         viewModel.getRecipes(recipesViewModel.applyQueries())
         viewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Error -> {
+                    hideShimmerEffect()
+                    loadDataFromCache()
+                    Toast.makeText(requireActivity(), "${response.message}", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+                is NetworkResult.Loading -> showShimmerEffect()
+
+                is NetworkResult.Success -> {
+                    hideShimmerEffect()
+                    response.data?.let {
+                        recipesAdapter.setData(it)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun searchRecipeApiData(searchQuery: String) {
+        showShimmerEffect()
+        viewModel.searchRecipes(recipesViewModel.applySearchQuery(searchQuery))
+        viewModel.searchedRecipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Error -> {
                     hideShimmerEffect()

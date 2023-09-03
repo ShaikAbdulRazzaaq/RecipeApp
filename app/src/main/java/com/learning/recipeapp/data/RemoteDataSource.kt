@@ -8,4 +8,7 @@ import javax.inject.Inject
 class RemoteDataSource @Inject constructor(private val recipeApiService: RecipeApiService) {
     suspend fun getRecipes(queries: Map<String, String>): Response<RecipeResult> =
         recipeApiService.getRecipes(queries)
+
+    suspend fun searchRecipes(searchQuery: Map<String, String>): Response<RecipeResult> =
+        recipeApiService.searchRecipes(searchQuery)
 }

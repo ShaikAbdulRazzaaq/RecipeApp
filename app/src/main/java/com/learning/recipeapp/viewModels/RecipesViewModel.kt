@@ -15,6 +15,7 @@ import com.learning.recipeapp.utils.Constants.QUERY_API_KEY
 import com.learning.recipeapp.utils.Constants.QUERY_DIET
 import com.learning.recipeapp.utils.Constants.QUERY_FILL_INGREDIENTS
 import com.learning.recipeapp.utils.Constants.QUERY_NUMBER
+import com.learning.recipeapp.utils.Constants.QUERY_SEARCH
 import com.learning.recipeapp.utils.Constants.QUERY_TYPE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -60,6 +61,16 @@ class RecipesViewModel @Inject constructor(
         queries[QUERY_API_KEY] = API_KEY
         queries[QUERY_TYPE] = mealType
         queries[QUERY_DIET] = dietType
+        queries[QUERY_ADD_RECIPE_INFORMATION] = "true"
+        queries[QUERY_FILL_INGREDIENTS] = "true"
+        return queries
+    }
+
+    fun applySearchQuery(searchQuery: String): HashMap<String, String> {
+        val queries = hashMapOf<String, String>()
+        queries[QUERY_SEARCH] = searchQuery
+        queries[QUERY_NUMBER] = DEFAULT_RECIPES_NUMBER
+        queries[QUERY_API_KEY] = API_KEY
         queries[QUERY_ADD_RECIPE_INFORMATION] = "true"
         queries[QUERY_FILL_INGREDIENTS] = "true"
         return queries
