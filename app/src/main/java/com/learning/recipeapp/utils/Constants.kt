@@ -25,4 +25,5 @@ object Constants {
     const val PREFERENCES_MEAL_TYPE_ID_KEY = "mealTypeId"
     const val PREFERENCES_DIET_TYPE_KEY = "dietType"
     const val PREFERENCES_DIET_TYPE_ID_KEY = "dietTypeId"
+    const val PREFERENCES_BACK_ONLINE_KEY = "backOnline"
 }

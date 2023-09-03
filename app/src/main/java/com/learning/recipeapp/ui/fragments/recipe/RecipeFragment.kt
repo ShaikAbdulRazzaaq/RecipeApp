@@ -2,10 +2,17 @@ package com.learning.recipeapp.ui.fragments.recipe
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -49,8 +56,36 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
             else recipesViewModel.showNetworkStatus()
         }
 
+        val menuHost: MenuHost = requireActivity()
+
+        menuHost.addMenuProvider(object : MenuProvider, SearchView.OnQueryTextListener {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.recipes_menu, menu)
+                val searchView = menu.findItem(R.id.menu_search).actionView as? SearchView
+                searchView?.setOnQueryTextListener(this)
+
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return true
+            }
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+
         setUpRecyclerView()
-        readDatabase()
+
+        recipesViewModel.readBackOnline.observe(viewLifecycleOwner) {
+            recipesViewModel.backOnline = it
+        }
 
         lifecycleScope.launch(Dispatchers.IO) {
             networkListener = NetworkListener()
@@ -58,10 +93,12 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
                 Log.d(TAG, "onViewCreated: NetworkListener $it")
                 recipesViewModel.networkStatus = it
                 recipesViewModel.showNetworkStatus()
+                readDatabase()
             }
         }
 
     }
+
 
     private fun setUpRecyclerView() {
         binding.shimmerRecyclerView.apply {
@@ -132,5 +169,6 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
     companion object {
         private const val TAG = "RecipeFragment"
     }
+
 
 }

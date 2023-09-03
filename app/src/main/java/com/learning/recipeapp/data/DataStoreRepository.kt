@@ -2,6 +2,7 @@ package com.learning.recipeapp.data
 
 import android.content.Context
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.intPreferencesKey
@@ -9,6 +10,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.learning.recipeapp.utils.Constants.DEFAULT_DIET_TYPE
 import com.learning.recipeapp.utils.Constants.DEFAULT_MEAL_TYPE
+import com.learning.recipeapp.utils.Constants.PREFERENCES_BACK_ONLINE_KEY
 import com.learning.recipeapp.utils.Constants.PREFERENCES_DIET_TYPE_ID_KEY
 import com.learning.recipeapp.utils.Constants.PREFERENCES_DIET_TYPE_KEY
 import com.learning.recipeapp.utils.Constants.PREFERENCES_MEAL_TYPE_ID_KEY
@@ -29,9 +31,27 @@ class DataStoreRepository @Inject constructor(@ApplicationContext private val co
         val selectedMealTypeId = intPreferencesKey(PREFERENCES_MEAL_TYPE_ID_KEY)
         val selectedDietType = stringPreferencesKey(PREFERENCES_DIET_TYPE_KEY)
         val selectedDietTypeId = intPreferencesKey(PREFERENCES_DIET_TYPE_ID_KEY)
+        val backOnline = booleanPreferencesKey(PREFERENCES_BACK_ONLINE_KEY)
     }
 
     private val Context.dataStore by preferencesDataStore(name = PREFERENCES_NAME)
+
+    suspend fun saveBackOnline(backOnline: Boolean) {
+        context.dataStore.edit {
+            it[PreferenceKeys.backOnline] = backOnline
+        }
+    }
+
+    val readBackOnline: Flow<Boolean> = context.dataStore.data.catch { throwable ->
+        if (throwable is IOException) {
+            emit(emptyPreferences())
+        } else throw throwable
+
+    }.map {
+        it[PreferenceKeys.backOnline] ?: false
+    }
+
+
     suspend fun saveMealAndDietType(
         dietType: String, dietTypeId: Int, mealType: String, mealTypeId: Int
     ) {
