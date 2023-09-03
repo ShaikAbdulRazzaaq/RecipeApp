@@ -10,7 +10,7 @@ import com.learning.recipeapp.utils.RecipesDiffUtil
 
 class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder>() {
 
-    var recipes = emptyList<RecipeResult.Result>()
+    private var recipes = emptyList<RecipeResult.Result>()
 
     class RecipesViewHolder(private val binding: ItemRecipeBinding) :
         RecyclerView.ViewHolder(binding.root) {

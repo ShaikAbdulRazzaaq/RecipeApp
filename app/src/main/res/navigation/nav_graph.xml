@@ -17,6 +17,9 @@
             android:name="backFromBottomSheet"
             android:defaultValue="false"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_recipeFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
     </fragment>
     <fragment
         android:id="@+id/favoriteRecipesFragment"
@@ -37,4 +40,15 @@
             android:id="@+id/action_bottomSheetFragment_to_recipeFragment"
             app:destination="@id/recipeFragment" />
     </dialog>
+    <activity
+        android:id="@+id/detailsActivity"
+        android:name="com.learning.recipeapp.ui.DetailsActivity"
+        android:label="Details"
+        tools:layout="@layout/activity_details">
+        <argument
+            android:name="result"
+            android:defaultValue="@null"
+            app:argType="com.learning.recipeapp.models.RecipeResult$Result"
+            app:nullable="true" />
+    </activity>
 </navigation>

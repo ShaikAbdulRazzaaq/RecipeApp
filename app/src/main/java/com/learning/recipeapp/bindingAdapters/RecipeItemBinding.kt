@@ -1,17 +1,35 @@
 package com.learning.recipeapp.bindingAdapters
 
+import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.text.buildSpannedString
 import androidx.databinding.BindingAdapter
+import androidx.navigation.findNavController
 import coil.load
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textview.MaterialTextView
 import com.learning.recipeapp.R
+import com.learning.recipeapp.models.RecipeResult
+import com.learning.recipeapp.ui.fragments.recipe.RecipeFragmentDirections
 
 class RecipeItemBinding {
     companion object {
+        @BindingAdapter("onRecipeClickListener")
+        @JvmStatic
+        fun onRecipeClickListener(cardView: MaterialCardView, result: RecipeResult.Result) {
+            cardView.setOnClickListener {
+                kotlin.runCatching {
+                    cardView.findNavController().navigate(
+                        RecipeFragmentDirections.actionRecipeFragmentToDetailsActivity(result)
+                    )
+                }.onFailure {
+                    Log.e(TAG, "onRecipeClickListener:${it.message} ", it)
+                }
+            }
+        }
 
         @BindingAdapter("loadImageUrl")
         @JvmStatic
@@ -27,9 +45,13 @@ class RecipeItemBinding {
         @BindingAdapter("setSummary")
         @JvmStatic
         fun setSummary(textView: MaterialTextView, summary: String) {
+//              Using HTMLCompat Library of Android
             textView.text = buildSpannedString {
                 append(HtmlCompat.fromHtml(summary, HtmlCompat.FROM_HTML_MODE_COMPACT))
             }
+
+            //Using Jsoup
+//            textView.text = Jsoup.parse(summary).text()
         }
 
         @BindingAdapter("likes")
@@ -67,5 +89,8 @@ class RecipeItemBinding {
                 }
             }
         }
+
+        private const val TAG = "RecipeItemBinding"
     }
+
 }

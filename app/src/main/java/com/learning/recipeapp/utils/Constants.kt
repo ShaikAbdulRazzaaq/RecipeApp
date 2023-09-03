@@ -1,5 +1,9 @@
 package com.learning.recipeapp.utils
 
+import com.learning.recipeapp.ui.fragments.IngredientsFragment
+import com.learning.recipeapp.ui.fragments.InstructionsFragment
+import com.learning.recipeapp.ui.fragments.OverViewFragment
+
 object Constants {
     const val API_KEY = "a5934ae043d04120b0d1e4396bc11138"
     const val BASE_URL = "https://api.spoonacular.com/"
@@ -27,4 +31,14 @@ object Constants {
     const val PREFERENCES_DIET_TYPE_KEY = "dietType"
     const val PREFERENCES_DIET_TYPE_ID_KEY = "dietTypeId"
     const val PREFERENCES_BACK_ONLINE_KEY = "backOnline"
+
+    //Parcelable Keys
+    const val RECIPE_BUNDLE = "recipeBundle"
+
+    val fragments = arrayOf(
+        OverViewFragment.getInstance(),
+        IngredientsFragment.getInstance(),
+        InstructionsFragment.getInstance()
+    )
+    val tabText = arrayOf("OverView", "Ingredients", "Instructions")
 }
