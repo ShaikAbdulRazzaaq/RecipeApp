@@ -92,9 +92,6 @@ dependencies {
     implementation("com.facebook.shimmer:shimmer:0.5.0")
     implementation("com.todkars:shimmer-recyclerview:0.4.1")
 
-
-    // Jsoup
-    implementation("org.jsoup:jsoup:1.16.1")
 }
 kapt {
     correctErrorTypes = true

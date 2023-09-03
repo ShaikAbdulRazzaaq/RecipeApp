@@ -17,4 +17,11 @@ class RecipesTypeConverter {
         return gson.fromJson(data, typeList)
     }
 
+    @TypeConverter
+    fun resultObjectToJsonString(result: RecipeResult.Result): String = gson.toJson(result)
+
+    @TypeConverter
+    fun jSonStringToResultObject(data: String): RecipeResult.Result =
+        gson.fromJson(data, object : TypeToken<RecipeResult.Result>() {}.type)
+
 }
