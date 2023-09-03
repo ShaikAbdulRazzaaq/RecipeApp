@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.learning.recipeapp.data.Repository
+import com.learning.recipeapp.data.database.entities.FavoritesEntity
 import com.learning.recipeapp.data.database.entities.RecipesEntity
 import com.learning.recipeapp.data.network.NetworkResult
 import com.learning.recipeapp.models.RecipeResult
@@ -23,13 +24,30 @@ class MainViewModel @Inject constructor(
     application: Application, private val repository: Repository
 ) : AndroidViewModel(application) {
     /** ROOM DATABASE */
-    val readDatabase = repository.localDataSource.readDatabase()
+    val readDatabase = repository.localDataSource.readRecipes()
+        .asLiveData(context = viewModelScope.coroutineContext)
+
+    val readFavoriteRecipes = repository.localDataSource.readFavoriteRecipes()
         .asLiveData(context = viewModelScope.coroutineContext)
 
     private fun insertRecipes(recipesEntity: RecipesEntity) =
         viewModelScope.launch(Dispatchers.IO) {
             repository.localDataSource.insertRecipes(recipesEntity)
         }
+
+     fun insertFavoriteRecipe(favoritesEntity: FavoritesEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.localDataSource.insertFavoriteRecipes(favoritesEntity)
+        }
+
+     fun deleteFavoriteRecipe(favoritesEntity: FavoritesEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.localDataSource.deleteFavoriteRecipe(favoritesEntity)
+        }
+
+     fun deleteAllFavoriteRecipe()=viewModelScope.launch(Dispatchers.IO){
+        repository.localDataSource.deleteAllRecipes()
+    }
 
     /** RETROFIT */
     val recipesResponse: MutableLiveData<NetworkResult<RecipeResult>> = MutableLiveData()

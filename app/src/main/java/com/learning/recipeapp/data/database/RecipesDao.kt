@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.learning.recipeapp.data.database.entities.FavoritesEntity
 import com.learning.recipeapp.data.database.entities.RecipesEntity
-import com.learning.recipeapp.models.RecipeResult
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -16,7 +15,7 @@ interface RecipesDao {
     suspend fun insertRecipes(recipesEntity: RecipesEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFavoriteRecipe(result: RecipeResult.Result)
+    suspend fun insertFavoriteRecipe(favoritesEntity: FavoritesEntity)
 
     @Query("SELECT * FROM recipes_table ORDER BY id ASC")
     fun readRecipes(): Flow<List<RecipesEntity>>
