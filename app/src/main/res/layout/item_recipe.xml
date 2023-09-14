@@ -6,7 +6,7 @@
 
         <variable
             name="result"
-            type="com.learning.recipeapp.models.RecipeResult.Result" />
+            type="com.learning.recipe.models.RecipeResult.Result" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.learning.recipeapp.viewModels.MainViewModel" />
+            type="com.learning.recipe.viewModels.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

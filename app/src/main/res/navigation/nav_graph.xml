@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/recipeFragment"
-        android:name="com.learning.recipeapp.ui.fragments.recipe.RecipeFragment"
+        android:name="com.learning.recipe.ui.fragments.recipe.RecipeFragment"
         android:label="Recipes"
         tools:layout="@layout/fragment_recipe">
         <action
@@ -23,17 +23,17 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteRecipesFragment"
-        android:name="com.learning.recipeapp.ui.fragments.favorites.FavoriteRecipesFragment"
+        android:name="com.learning.recipe.ui.fragments.favorites.FavoriteRecipesFragment"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorite_recipes" />
     <fragment
         android:id="@+id/foodJokeFragment"
-        android:name="com.learning.recipeapp.ui.fragments.foodJoke.FoodJokeFragment"
+        android:name="com.learning.recipe.ui.fragments.foodJoke.FoodJokeFragment"
         android:label="Joke"
         tools:layout="@layout/fragment_food_joke" />
     <dialog
         android:id="@+id/bottomSheetFragment"
-        android:name="com.learning.recipeapp.ui.fragments.recipe.bottomSheet.BottomSheetFragment"
+        android:name="com.learning.recipe.ui.fragments.recipe.bottomSheet.BottomSheetFragment"
         android:label="fragment_recipes_bottom_sheet"
         tools:layout="@layout/fragment_recipes_bottom_sheet">
         <action
@@ -42,13 +42,13 @@
     </dialog>
     <activity
         android:id="@+id/detailsActivity"
-        android:name="com.learning.recipeapp.ui.DetailsActivity"
+        android:name="com.learning.recipe.ui.DetailsActivity"
         android:label="Details"
         tools:layout="@layout/activity_details">
         <argument
             android:name="result"
             android:defaultValue="@null"
-            app:argType="com.learning.recipeapp.models.RecipeResult$Result"
+            app:argType="com.learning.recipe.models.RecipeResult$Result"
             app:nullable="true" />
     </activity>
 </navigation>
