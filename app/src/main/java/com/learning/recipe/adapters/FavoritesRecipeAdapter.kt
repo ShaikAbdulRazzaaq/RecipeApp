@@ -3,11 +3,13 @@ package com.learning.recipe.adapters
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.learning.recipe.data.database.entities.FavoritesEntity
 import com.learning.recipe.databinding.ItemFavoriteRecipeBinding
+import com.learning.recipe.ui.fragments.favorites.FavoriteRecipesFragmentDirections
 import com.learning.recipe.utils.RecipesDiffUtil
 
 class FavoritesRecipeAdapter :
@@ -15,7 +17,7 @@ class FavoritesRecipeAdapter :
 
     private var favoriteRecipes = emptyList<FavoritesEntity>()
 
-    class FavoriteRecipeViewHolderClass(private val binding: ItemFavoriteRecipeBinding) :
+    class FavoriteRecipeViewHolderClass(val binding: ItemFavoriteRecipeBinding) :
         ViewHolder(binding.root) {
         fun bind(favoritesEntity: FavoritesEntity) {
             binding.favoritesEntity = favoritesEntity
@@ -36,6 +38,14 @@ class FavoritesRecipeAdapter :
     override fun onBindViewHolder(holder: FavoriteRecipeViewHolderClass, position: Int) {
         val favoritesEntity = favoriteRecipes[position]
         holder.bind(favoritesEntity)
+        holder.binding.cvRecipe.setOnClickListener {
+            holder.itemView.findNavController().navigate(
+                FavoriteRecipesFragmentDirections.actionFavoriteRecipesFragmentToDetailsActivity(
+                    favoritesEntity.result
+                )
+            )
+        }
+
     }
 
     fun setData(newFavoriteRecipes: List<FavoritesEntity>) {
