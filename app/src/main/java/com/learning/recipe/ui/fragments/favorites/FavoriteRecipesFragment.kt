@@ -1,8 +1,9 @@
 package com.learning.recipe.ui.fragments.favorites
 
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,20 +22,19 @@ class FavoriteRecipesFragment : Fragment(R.layout.fragment_favorite_recipes) {
     private var _binding: FragmentFavoriteRecipesBinding? = null
     private val binding get() = _binding!!
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentFavoriteRecipesBinding.bind(view)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentFavoriteRecipesBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.favoriteRecipeAdapter = favoritesRecipeAdapter
+        binding.mainViewModel = viewModel
 
         binding.rvFavorites.layoutManager =
             LinearLayoutManager(requireActivity(), RecyclerView.VERTICAL, false)
         binding.rvFavorites.adapter = favoritesRecipeAdapter
-
-        viewModel.readFavoriteRecipes.observe(viewLifecycleOwner) {
-            Log.d(TAG, "onViewCreated:$it ")
-            favoritesRecipeAdapter.setData(it)
-        }
+        return _binding?.root
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
