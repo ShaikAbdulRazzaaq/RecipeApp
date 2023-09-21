@@ -5,4 +5,6 @@ import com.learning.recipe.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FoodJokeFragment : Fragment(R.layout.fragment_food_joke)
+class FoodJokeFragment : Fragment(R.layout.fragment_food_joke){
+
+}

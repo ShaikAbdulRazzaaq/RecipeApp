@@ -49,10 +49,11 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.2")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.2")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
 
     implementation("com.google.dagger:hilt-android:2.48")
+    implementation("com.airbnb.android:lottie:6.1.0")
     ksp("com.google.dagger:hilt-android-compiler:2.48")
 
     testImplementation("junit:junit:4.13.2")
@@ -91,6 +92,7 @@ dependencies {
     // Shimmer
     implementation("com.facebook.shimmer:shimmer:0.5.0")
     implementation("com.todkars:shimmer-recyclerview:0.4.1")
+
 
 }
 kapt {

@@ -1,19 +1,25 @@
 package com.learning.recipe.adapters
 
 import android.util.Log
+import android.view.ActionMode
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.learning.recipe.R
 import com.learning.recipe.data.database.entities.FavoritesEntity
 import com.learning.recipe.databinding.ItemFavoriteRecipeBinding
 import com.learning.recipe.ui.fragments.favorites.FavoriteRecipesFragmentDirections
 import com.learning.recipe.utils.RecipesDiffUtil
 
-class FavoritesRecipeAdapter :
-    RecyclerView.Adapter<FavoritesRecipeAdapter.FavoriteRecipeViewHolderClass>() {
+class FavoritesRecipeAdapter(private val fragmentActivity: FragmentActivity) :
+    RecyclerView.Adapter<FavoritesRecipeAdapter.FavoriteRecipeViewHolderClass>(),
+    ActionMode.Callback {
 
     private var favoriteRecipes = emptyList<FavoritesEntity>()
 
@@ -45,6 +51,10 @@ class FavoritesRecipeAdapter :
                 )
             )
         }
+        holder.binding.cvRecipe.setOnLongClickListener {
+            fragmentActivity.startActionMode(this)
+            true
+        }
 
     }
 
@@ -57,5 +67,22 @@ class FavoritesRecipeAdapter :
 
     companion object {
         private const val TAG = "FavoritesRecipeAdapter"
+    }
+
+    override fun onCreateActionMode(actionMode: ActionMode?, menu: Menu?): Boolean {
+        actionMode?.menuInflater?.inflate(R.menu.favorites_contextual_menu, menu)
+        return true
+    }
+
+    override fun onPrepareActionMode(actionMode: ActionMode?, menu: Menu?): Boolean {
+        return true
+    }
+
+    override fun onActionItemClicked(actionMode: ActionMode?, menuItem: MenuItem?): Boolean {
+        return true
+    }
+
+    override fun onDestroyActionMode(actionMode: ActionMode?) {
+        Log.d(TAG, "onDestroyActionMode: ")
     }
 }
