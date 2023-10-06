@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,7 +28,6 @@ import com.learning.recipe.utils.observeOnce
 import com.learning.recipe.viewModels.MainViewModel
 import com.learning.recipe.viewModels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
@@ -91,13 +91,15 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
             recipesViewModel.backOnline = it
         }
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            networkListener = NetworkListener()
-            networkListener.checkNetworkAvailability(requireActivity()).collect {
-                Log.d(TAG, "onViewCreated: NetworkListener $it")
-                recipesViewModel.networkStatus = it
-                recipesViewModel.showNetworkStatus()
-                readDatabase()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                networkListener = NetworkListener()
+                networkListener.checkNetworkAvailability(requireActivity()).collect {
+                    Log.d(TAG, "onViewCreated: NetworkListener $it")
+                    recipesViewModel.networkStatus = it
+                    recipesViewModel.showNetworkStatus()
+                    readDatabase()
+                }
             }
         }
 
