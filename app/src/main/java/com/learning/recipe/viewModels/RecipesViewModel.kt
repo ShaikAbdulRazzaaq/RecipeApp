@@ -18,6 +18,7 @@ import com.learning.recipe.utils.Constants.QUERY_NUMBER
 import com.learning.recipe.utils.Constants.QUERY_SEARCH
 import com.learning.recipe.utils.Constants.QUERY_TYPE
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -79,9 +80,11 @@ class RecipesViewModel @Inject constructor(
     fun showNetworkStatus() {
         when {
             !networkStatus -> {
-                Toast.makeText(
-                    application.applicationContext, "No Internet Connection", Toast.LENGTH_SHORT
-                ).show()
+                CoroutineScope(Dispatchers.Main).launch {
+                    Toast.makeText(
+                        application.applicationContext, "No Internet Connection", Toast.LENGTH_SHORT
+                    ).show()
+                }
                 saveBackOnline(true)
             }
 
